@@ -65,4 +65,17 @@ final class WordTest extends TestCase {
         $secondWord = new Word('table');
         $this->assertEquals([1], $firstWord->matchesPositionWith($secondWord));
     }
+
+    public function test12MatchesAllLetters() {
+        $firstWord = new Word('trees');
+        $secondWord = new Word('trees');
+        $this->assertEquals([1, 2, 3 , 4 ,5], $firstWord->matchesPositionWith($secondWord));
+    }
+
+    public function test13MatchesIncorrectPositions() {
+        $firstWord = new Word('trees');
+        $secondWord = new Word('loser');
+        $this->assertEquals([4], $firstWord->matchesPositionWith($secondWord));
+        $this->assertEquals([], $firstWord->matchesIncorrectPositionWith($secondWord));
+    }
 }

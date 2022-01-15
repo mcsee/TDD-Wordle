@@ -33,6 +33,10 @@ final class Word {
         return $positions;
     }
 
+    function matchesIncorrectPositionWith(Word $anotherWord) : array {
+        return [];
+    }
+
     public function __toString(){
         return $this->letters;
     }
