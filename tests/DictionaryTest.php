@@ -13,4 +13,10 @@ final class DictionaryTest extends TestCase {
         $dictionary = new Dictionary([]);
         $this->assertEquals(0, $dictionary->wordsCount());
     }
+
+    public function test02SingleDictionaryReturns1AsCount() {
+        $words = [new Word('happy')];
+        $dictionary = new Dictionary($words);
+        $this->assertEquals(1, $dictionary->wordsCount());
+    }
 }
