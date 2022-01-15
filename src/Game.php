@@ -2,7 +2,7 @@
 
 Namespace Wordle;
 
-require ROOT . '/Word.php';
+require_once dirname(dirname(__FILE__)).'/src/Word.php';
 
 final class Game {
 

@@ -4,8 +4,7 @@ namespace Wordle;
 
 use PHPUnit\Framework\TestCase;
 
-define('ROOT', dirname(dirname(__FILE__)).'/src');
-require ROOT . '/Word.php';
+require_once dirname(dirname(__FILE__)).'/src/Word.php';
 
 final class WordTest extends TestCase {
     public function test01ValidWordLettersAreValid() {
@@ -59,5 +58,11 @@ final class WordTest extends TestCase {
         $firstWord = new Word('trees');
         $secondWord = new Word('valid');
         $this->assertEquals([], $firstWord->matchesPositionWith($secondWord));
+    }
+
+    public function test11MatchesFirstLetter() {
+        $firstWord = new Word('trees');
+        $secondWord = new Word('table');
+        $this->assertEquals([1], $firstWord->matchesPositionWith($secondWord));
     }
 }

@@ -4,9 +4,8 @@ namespace Wordle;
 
 use PHPUnit\Framework\TestCase;
 
-define('ROOT', dirname(dirname(__FILE__)).'/src');
-require ROOT . '/Dictionary.php';
-require ROOT . '/Word.php';
+require_once dirname(dirname(__FILE__)).'/src/Word.php';
+require_once dirname(dirname(__FILE__)).'/src/Dictionary.php';
 
 final class DictionaryTest extends TestCase {
     public function test01EmptyDictionaryHasNoWords() {

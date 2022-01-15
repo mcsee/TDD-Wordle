@@ -4,9 +4,8 @@ namespace Wordle;
 
 use PHPUnit\Framework\TestCase;
 
-define('ROOT', dirname(dirname(__FILE__)).'/src');
-require ROOT . '/Game.php';
-require ROOT . '/Dictionary.php';
+require_once dirname(dirname(__FILE__)).'/src/Game.php';
+require_once dirname(dirname(__FILE__)).'/src/Dictionary.php';
 
 final class GameTest extends TestCase {
     public function test01EmptyGameHasNoWinner() {
