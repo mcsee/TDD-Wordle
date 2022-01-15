@@ -8,13 +8,15 @@ final class Game {
 
     private $wordsTried;
     private $dictionary;
-    function __construct(Dictionary $validWords) {
+    private $winnerWord;
+    function __construct(Dictionary $validWords, Word $winnerWord) {
         $this->dictionary = $validWords;
         $this->wordsTried = [];
+        $this->winnerWord = $winnerWord;
     }
 
     function hasWon(): bool {
-        return false;
+        return in_array($this->winnerWord, $this->wordsTried);
     }
 
     function hasLost(): bool {

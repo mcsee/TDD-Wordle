@@ -10,29 +10,39 @@ require ROOT . '/Dictionary.php';
 
 final class GameTest extends TestCase {
     public function test01EmptyGameHasNoWinner() {
-        $game = new Game();
+        $words = [new Word('happy')];
+        $dictionary = new Dictionary($words);
+        $game = new Game($dictionary, new Word('happy'));
         $this->assertFalse($game->hasWon());
     }
 
     public function test02EmptyGameHasNoWinner() {
-        $game = new Game();
+        $words = [new Word('happy')];
+        $dictionary = new Dictionary($words);
+        $game = new Game($dictionary, new Word('happy'));
         $this->assertEquals([], $game->wordsTried());
     }
 
     public function test03TryOneWordAndRecordIt() {
-        $game = new Game();
+        $words = [new Word('loser'), new Word('happy')];
+        $dictionary = new Dictionary($words);
+        $game = new Game($dictionary, new Word('happy'));
         $game->addtry(new Word('loser'));
         $this->assertEquals([new Word('loser')], $game->wordsTried());
     }
 
     public function test04TryOneWordAndDontLooseYet() {
-        $game = new Game();
+        $words = [new Word('loser'), new Word('happy')];
+        $dictionary = new Dictionary($words);
+        $game = new Game($dictionary, new Word('happy'));
         $game->addtry(new Word('loser'));
         $this->assertFalse($game->hasLost());
     }
 
     public function test05TryFiveWordsLoses() {
-        $game = new Game();
+        $words = [new Word('loser'), new Word('happy')];
+        $dictionary = new Dictionary($words);
+        $game = new Game($dictionary, new Word('happy'));
         $game->addtry(new Word('loser'));
         $game->addtry(new Word('loser'));
         $game->addtry(new Word('loser'));
@@ -45,8 +55,18 @@ final class GameTest extends TestCase {
     public function test06TryToPlayInvalid() {
         $words = [new Word('happy')];
         $dictionary = new Dictionary($words);
-        $game = new Game($dictionary);
+        $game = new Game($dictionary, new Word('happy'));
         $this->expectException(\Exception::class);
         $game->addtry(new Word('xxxx'));
+    }
+
+    public function test07GuessesWord() {
+        $words = [new Word('happy')];
+        $dictionary = new Dictionary($words);
+        $winnerWord = new Word('happy');
+        $game = new Game($dictionary, $winnerWord);
+        $this->assertFalse($game->hasWon());
+        $game->addtry(new Word('happy'));
+        $this->assertTrue($game->hasWon());
     }
 }
