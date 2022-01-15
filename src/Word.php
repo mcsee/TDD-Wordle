@@ -22,6 +22,10 @@ final class Word {
         return str_split($this->letters);
     }
 
+    function matchesPositionWith(Word $anotherWord) : array {
+        return [];
+    }
+
     public function __toString(){
         return $this->letters;
     }

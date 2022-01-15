@@ -54,4 +54,10 @@ final class WordTest extends TestCase {
         $grassWord = new Word('grass');
         $this->assertEquals(['g', 'r', 'a', 's', 's'], $grassWord->letters());
     }
+
+    public function test10NoMatch() {
+        $firstWord = new Word('trees');
+        $secondWord = new Word('valid');
+        $this->assertEquals([], $firstWord->matchesPositionWith($secondWord));
+    }
 }
