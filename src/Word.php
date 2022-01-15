@@ -5,6 +5,8 @@ Namespace Wordle;
 final class Word {
 
     function __construct(string $letters) {
+        if (str_contains($letters, '.'))
+            throw new \Exception('word contain invalid letters');
         if (str_contains($letters,'*')) {
            throw new \Exception('word contain invalid letters');
         }

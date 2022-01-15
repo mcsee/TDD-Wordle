@@ -32,4 +32,9 @@ final class WordTest extends TestCase {
         $this->expectException(\Exception::class);
         $wordleWord = new Word('vali*');
     }
+
+    public function test06PointShouldRaiseException() {
+        $this->expectException(\Exception::class);
+        new Word('v.lid');
+    }
 }
