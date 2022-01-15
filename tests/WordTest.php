@@ -22,4 +22,14 @@ final class WordTest extends TestCase {
         $this->expectException(\Exception::class);
         new Word('toolong');
     }
+
+    public function test04EmptyLettersShouldRaiseException() {
+        $this->expectException(\Exception::class);
+        new Word('');
+    }
+
+    public function test05InvalidLettersShouldRaiseException() {
+        $this->expectException(\Exception::class);
+        $wordleWord = new Word('vali*');
+    }
 }
