@@ -25,4 +25,10 @@ final class DictionaryTest extends TestCase {
         $dictionary = new Dictionary($words);
         $this->assertFalse($dictionary->includesWord(new Word('sadly')));
     }
+
+    public function test04DictionaryIncludesWord() {
+        $words = [new Word('happy')];
+        $dictionary = new Dictionary($words);
+        $this->assertTrue($dictionary->includesWord(new Word('happy')));
+    }
 }

@@ -13,7 +13,7 @@ final class Dictionary {
         return count($this->words);
     }
 
-    function includesWord(): bool {
-        return false;
+    function includesWord(Word $subjectToSearch): bool {
+        return in_array($subjectToSearch, $this->words);
     }
 }
