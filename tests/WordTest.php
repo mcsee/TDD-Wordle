@@ -17,4 +17,9 @@ final class WordTest extends TestCase {
         $this->expectException(\Exception::class);
         new Word('vali');
     }
+
+    public function test03TooManyWordLettersShouldRaiseException() {
+        $this->expectException(\Exception::class);
+        new Word('toolong');
+    }
 }
