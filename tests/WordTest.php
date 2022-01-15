@@ -30,11 +30,17 @@ final class WordTest extends TestCase {
 
     public function test05InvalidLettersShouldRaiseException() {
         $this->expectException(\Exception::class);
-        $wordleWord = new Word('vali*');
+        new Word('vali*');
     }
 
     public function test06PointShouldRaiseException() {
         $this->expectException(\Exception::class);
         new Word('v.lid');
+    }
+
+    public function test07TwoWordsAreNotTheSame() {
+        $firstWord = new Word('valid');
+        $secondWord = new Word('happy');
+        $this->assertNotEquals($firstWord, $secondWord);
     }
 }

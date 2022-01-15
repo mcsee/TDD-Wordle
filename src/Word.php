@@ -4,6 +4,7 @@ Namespace Wordle;
 
 final class Word {
 
+    private $setters;
     function __construct(string $letters) {
         if (!\preg_match('/^[a-z]+$/i', $letters)) {
             throw new \Exception('word contain invalid letters');
@@ -14,6 +15,7 @@ final class Word {
         if (strlen($letters) > 5) {
             throw new \Exception('Too many letters. Should be 5');
         }
+        $this->letters = $letters;
     }
 
     function letters(): array {
