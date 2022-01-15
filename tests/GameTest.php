@@ -41,4 +41,12 @@ final class GameTest extends TestCase {
         $game->addtry(new Word('loser'));
         $this->assertTrue($game->hasLost());
     }
+
+    public function test06TryToPlayInvalid() {
+        $words = [new Word('happy')];
+        $dictionary = new Dictionary($words);
+        $game = new Game($dictionary);
+        $this->expectException(\Exception::class);
+        $game->addtry(new Word('xxxx'));
+    }
 }

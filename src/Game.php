@@ -7,7 +7,9 @@ require ROOT . '/Word.php';
 final class Game {
 
     private $wordsTried;
-    function __construct() {
+    private $dictionary;
+    function __construct(Dictionary $validWords) {
+        $this->dictionary = $validWords;
         $this->wordsTried = [];
     }
 
@@ -20,6 +22,9 @@ final class Game {
     }
 
     function addTry(Word $trial) {
+        if (!$this->dictionary->includesWord($trial)){
+            throw new \Exception('Word is not included ' . $trial);
+        }
         return $this->wordsTried[] = $trial;
     }
 
