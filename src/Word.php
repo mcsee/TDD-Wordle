@@ -19,6 +19,10 @@ final class Word {
     }
 
     function letters(): array {
-        return ['v', 'a', 'l', 'i', 'd'];
+        return str_split($this->letters);
+    }
+
+    public function __toString(){
+        return $this->letters;
     }
 }

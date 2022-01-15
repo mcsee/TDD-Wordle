@@ -43,4 +43,15 @@ final class WordTest extends TestCase {
         $secondWord = new Word('happy');
         $this->assertNotEquals($firstWord, $secondWord);
     }
+
+    public function test08TwoWordsAreTheSame() {
+        $firstWord = new Word('valid');
+        $secondWord = new Word('valid');
+        $this->assertEquals($firstWord, $secondWord);
+    }
+
+    public function test09LettersForGrassWord() {
+        $grassWord = new Word('grass');
+        $this->assertEquals(['g', 'r', 'a', 's', 's'], $grassWord->letters());
+    }
 }
