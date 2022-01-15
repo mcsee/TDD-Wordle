@@ -69,4 +69,12 @@ final class GameTest extends TestCase {
         $game->addtry(new Word('happy'));
         $this->assertTrue($game->hasWon());
     }
+
+    public function test08WinnerWordNotInDictionary() {
+        $words = [new Word('happy')];
+        $dictionary = new Dictionary($words);
+        $winnerWord = new Word('heros');
+        $this->expectException(\Exception::class);
+        new Game($dictionary, $winnerWord);
+    }
 }

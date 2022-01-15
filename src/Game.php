@@ -10,6 +10,9 @@ final class Game {
     private $dictionary;
     private $winnerWord;
     function __construct(Dictionary $validWords, Word $winnerWord) {
+        if (!$validWords->includesWord($winnerWord)){
+            throw new \Exception('Winner word must be in dictionary');
+        }
         $this->dictionary = $validWords;
         $this->wordsTried = [];
         $this->winnerWord = $winnerWord;
