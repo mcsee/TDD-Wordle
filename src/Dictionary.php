@@ -12,4 +12,8 @@ final class Dictionary {
     function wordsCount(): int {
         return count($this->words);
     }
+
+    function includesWord(): bool {
+        return false;
+    }
 }
