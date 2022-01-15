@@ -34,7 +34,15 @@ final class Word {
     }
 
     function matchesIncorrectPositionWith(Word $anotherWord) : array {
-        return [];
+        $positions = [];
+        //count($this->letters() is always 5 but we don't want to add a magic number here
+        for ($currentPosition = 0; $currentPosition < count($this->letters()); $currentPosition++){
+            if (in_array($this->letters()[$currentPosition], $anotherWord->letters())) {
+                $positions[] = $currentPosition + 1; //Humans start counting on 1
+                //We can implement this better in several other languages
+            }
+        }
+        return array_values(array_diff($positions, $this->matchesPositionWith($anotherWord)));
     }
 
     public function __toString(){

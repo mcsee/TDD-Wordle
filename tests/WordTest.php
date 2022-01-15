@@ -74,8 +74,18 @@ final class WordTest extends TestCase {
 
     public function test13MatchesIncorrectPositions() {
         $firstWord = new Word('trees');
-        $secondWord = new Word('loser');
-        $this->assertEquals([4], $firstWord->matchesPositionWith($secondWord));
+        $secondWord = new Word('drama');
+        $this->assertEquals([2], $firstWord->matchesPositionWith($secondWord));
         $this->assertEquals([], $firstWord->matchesIncorrectPositionWith($secondWord));
+    }
+
+    public function test14MatchesIncorrectPositionsWithMatch() {
+        $firstWord = new Word('alarm');
+        $secondWord = new Word('drama');
+        $this->assertEquals([3], $firstWord->matchesPositionWith($secondWord));
+        $this->assertEquals([1, 4, 5], $firstWord->matchesIncorrectPositionWith($secondWord));
+        //A*ARM vs *RAMA
+        $this->assertEquals([3], $secondWord->matchesPositionWith($firstWord));
+        $this->assertEquals([2, 4, 5], $secondWord->matchesIncorrectPositionWith($firstWord));
     }
 }
