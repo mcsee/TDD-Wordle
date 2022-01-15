@@ -16,7 +16,7 @@ final class Game {
     }
 
     function hasLost(): bool {
-        return false;
+        return count($this->wordsTried) > 4;
     }
 
     function addTry(Word $trial) {

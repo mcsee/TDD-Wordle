@@ -30,4 +30,15 @@ final class GameTest extends TestCase {
         $game->addtry(new Word('loser'));
         $this->assertFalse($game->hasLost());
     }
+
+    public function test05TryFiveWordsLoses() {
+        $game = new Game();
+        $game->addtry(new Word('loser'));
+        $game->addtry(new Word('loser'));
+        $game->addtry(new Word('loser'));
+        $game->addtry(new Word('loser'));
+        $this->assertFalse($game->hasLost());
+        $game->addtry(new Word('loser'));
+        $this->assertTrue($game->hasLost());
+    }
 }
