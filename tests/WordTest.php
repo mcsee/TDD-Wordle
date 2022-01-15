@@ -12,4 +12,9 @@ final class WordTest extends TestCase {
         $wordleWord = new Word('valid');
         $this->assertEquals(['v', 'a', 'l', 'i', 'd'], $wordleWord->letters());
     }
+
+    public function test02FewWordLettersShouldRaiseException() {
+        $this->expectException(\Exception::class);
+        new Word('vali');
+    }
 }
