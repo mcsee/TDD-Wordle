@@ -15,6 +15,10 @@ final class Game {
         return false;
     }
 
+    function hasLost(): bool {
+        return false;
+    }
+
     function addTry(Word $trial) {
         return $this->wordsTried[] = $trial;
     }

@@ -24,4 +24,10 @@ final class GameTest extends TestCase {
         $game->addtry(new Word('loser'));
         $this->assertEquals([new Word('loser')], $game->wordsTried());
     }
+
+    public function test04TryOneWordAndDontLooseYet() {
+        $game = new Game();
+        $game->addtry(new Word('loser'));
+        $this->assertFalse($game->hasLost());
+    }
 }
